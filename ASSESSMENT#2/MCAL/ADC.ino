@@ -14,10 +14,6 @@ static void (* ADC_pvNotificationFunc)(void)= NULL;
 /*Global flag for the ADC ISR State*/
 static u8 ADC_u8ISRState ;
 
-
-/*Global variable to indicate for the current ADC Chain*/
-static u8 ADC_u8Index ;
-
 /*Global flag for the ADC Busy State*/
 static u8 ADC_u8State= IDLE ;
 
@@ -38,7 +34,7 @@ void ADC_voidINIT(void){
 		SET_BIT(ADMUX_REG  , ADMUX_REFS0) ;
 		CLR_BIT(ADMUX_REG  , ADMUX_REFS1) ;
 
-	#elif ADC_VREF == INTERNAL_2_56
+	#elif ADC_VREF == INTERNAL_1_1
 		SET_BIT(ADMUX_REG  , ADMUX_REFS0) ;
 		SET_BIT(ADMUX_REG  , ADMUX_REFS1) ;
 
@@ -132,8 +128,7 @@ u8 ADC_u8StartConversionAsynch (u8 Copy_u8Channel , u16 * Copy_pu16Result , void
 ISR(ADC_vect) {
 	* ADC_pu16AsynchConversionResult=(ADCL_REG|(ADCH_REG  << 8)) ;
 	
-	//(ADCL_REG|(ADCH_REG  << 8)) 
-	//ADC_DATA
+	
 	
 	/*ADC is IDLE*/
 	ADC_u8State = IDLE ;

@@ -34,8 +34,8 @@ Initalize button as an input by using DIO_SetPinDirection
 
 ```
 ## Design of the Circuit Using Tinkercad :
-![image](![image](https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/9afc1a76-df8f-43bd-8955-16bc8ecd0755)
+(![image](https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/9afc1a76-df8f-43bd-8955-16bc8ecd0755)
 
 
 ## Design of the Circuit on Proteus:
-![image](![image](https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/d3e56552-bf91-4d98-8225-b8ca80c74750)
+(![image](https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/d3e56552-bf91-4d98-8225-b8ca80c74750)

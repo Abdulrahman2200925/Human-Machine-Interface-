@@ -6,7 +6,7 @@ This is a sample readme file for our project, the project is to make a c program
 ## Table of contents:
 * [Team Members](#team-members)
 * [Built In Libraries We used](#built-in-libraries-we-used)
-* [Functions Created and Used](#functions-created-and=used)
+* [Functions Created and Used In The Main](#functions-created-and=used-in-the-main)
 * [Design of the Circuit Using Tinkercad](#design-of-the-circuit-using-tinkercad)
 * [Design of the Circuit on Proteus](#design-of-the-circuit-on-proteus)
 
@@ -18,19 +18,32 @@ This is a sample readme file for our project, the project is to make a c program
 ## Built In Libraries We used:
 * avr/interrupt.h
 
-### Functions Created and Used:
+### Functions Created and Used In The Main:
 ```
-* function DIO_SetPinDirection:
+* DIO_u8SetPinDirection(DIO_PORT,DIO_PIN,DIO_PIN_INPUT/OUTPUT):
 Sets the pin chosen as input or output
 
-* function DIO_SetPinValue:
+* DIO_SetPinValue(DIO_PORT,DIO_PIN,DIO_PIN_HIGH/LOW):
 Sets the pin chosen as high or low
 
-* function DIO_GetPinValue: 
-Gets the value/signal from the component connected to the pin chosen
+* ADC_voidINIT():
+INITIALIZE THE ADC: Select the voltage reference, Set Left Adjust Result, Set Prescaler Value, Enable ADC Peripheral, Enable ADC Interrupt
 
-* function button_init:
-Initalize button as an input by using DIO_SetPinDirection
+* I2CLCD_init():
+INITIALIZE THE I2C_LCD: Initialize your Master Address and Perform LCD initialization steps such as  4-Bit Mode, 2-Row Select, etc.
+
+* INT0_init():
+INITIALIZE EXTERNAL INTERRUPT 0 FOR INCREMENT BUTTON, trigger on falling edge
+
+* INT1_init():
+INITIALIZE EXTERNAL INTERRUPT 1  FOR DECREMENT BUTTON, trigger on falling edge
+
+* ADC_u8StartConversionAsynchu8 (Copy_u8Channel , u16 * Copy_pu16Result , void (*Copy_pvNotificationFunc)(void)):
+FUNCTION THAT START CONVERSION OF THE ADC AND IMPLEMENT THE INTERRUPT WHEN IT FINISHES CONVERSION
+
+* temp_lm35():
+FUNCTION THAT DISPLAY THE TEMPERATURE OF LM35 AND CHECK IF THE TEMPERATURE EXCEED THE LIMITTER VALUE
+
 
 ```
 ## Design of the Circuit Using Tinkercad :

@@ -9,7 +9,7 @@
 
 #define AREF                    0
 #define AVCC                    1
-#define INTERNAL_2_56           3
+#define INTERNAL_1_1         3
 
 
 #define RIGHT_ADJUSTMENT        0
@@ -24,15 +24,8 @@
 #define ADC_CHANNEL6            6
 #define ADC_CHANNEL7            7
 
-#define ADC_SINGLE_CONVERSION   0
-#define ADC_FREE_RUNNING        1
-#define ADC_ANALOG_COMPARATOR   2
-#define ADC_EXTI0               3
-#define ADC_TIM0_CTC            4
-#define ADC_TIM0_OVF            5
-#define ADC_TIM1_CTC_CHANNEL_B  6
-#define ADC_TIM1_OVF            7
-#define ADC_TIM1_ICU            8
+
+
 
 
 #define ADC_PRE_2               0

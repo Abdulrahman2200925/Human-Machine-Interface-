@@ -20,10 +20,10 @@ This is a sample readme file for our project, the project is to make a c program
 
 ### Functions Created and Used In The Main:
 ```
-* DIO_u8SetPinDirection(DIO_PORT,DIO_PIN,DIO_PIN_INPUT/OUTPUT):
+* u8 DIO_u8SetPinDirection(u8 copy_Port, u8  copy_PinNumber,u8  copy_PinDirection):
 Sets the pin chosen as input or output
 
-* DIO_SetPinValue(DIO_PORT,DIO_PIN,DIO_PIN_HIGH/LOW):
+* u8 DIO_u8SetPinValue(u8 copy_Port, u8  copy_PinNumber,u8  copy_PinValue):
 Sets the pin chosen as high or low
 
 * ADC_voidINIT():

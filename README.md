@@ -9,6 +9,7 @@ This is a sample readme file for our project, the project is to make a c program
 * [Functions Created and Used In The Main](#functions-created-and=used-in-the-main)
 * [Design of the Circuit Using Tinkercad](#design-of-the-circuit-using-tinkercad)
 * [Design of the Circuit on Proteus](#design-of-the-circuit-on-proteus)
+* [Flowchart](#flowchart)
 
 ## Team Members:
 * Abdelrahman Mohammed
@@ -52,4 +53,7 @@ FUNCTION THAT DISPLAY THE TEMPERATURE OF LM35 AND CHECK IF THE TEMPERATURE EXCEE
 
 ## Design of the Circuit on Proteus:
 ![image](https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/bbd6bec3-4509-4460-ad54-070fd6fd7623)
+
+## Flowchart
+![image](https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/459e9d60-9a4f-4e6a-8ba6-53b8a2a2d535)
 

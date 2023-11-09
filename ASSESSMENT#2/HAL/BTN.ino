@@ -1,15 +1,14 @@
-#include <avr/interrupt.h>
-#define F_CPU 16000000UL
-#include <util/delay.h>
-#include "STD_TYPES.h"
-#include "BIT.h"
-#include "DIO_INTERFACE.h"
-#include "EXIT_INT_INTERFACE.h"
-#include "I2C_LCD_INTERFACE.h"
+#include <avr/interrupt.h>          // Include the AVR interrupt header file
+#define F_CPU 16000000UL           // Define the CPU frequency as 16 MHz
+#include <util/delay.h>            // Include the delay header file
+#include "STD_TYPES.h"             // Include custom STD_TYPES.h header file for standard types
+#include "BIT.h"                   // Include custom BIT.h header file for bit manipulation
+#include "DIO_INTERFACE.h"         // Include custom DIO_INTERFACE.h header file for Digital I/O
+#include "EXIT_INT_INTERFACE.h"    // Include custom EXIT_INT_INTERFACE.h header file for external interrupts
+#include "I2C_LCD_INTERFACE.h"     // Include custom I2C_LCD_INTERFACE.h header file for I2C LCD interface
 
-
-
-volatile u8 Temp_Limitter = 0;
+volatile u8 Temp_Limitter = 0;    // Declare a volatile 8-bit variable for Temp_Limitter
+volatile u8 button_state;          // Declare a volatile 8-bit variable for button state
 
 
 void display_button() {
@@ -36,11 +35,12 @@ void display_button() {
 }
 
 ISR(INT0_vect) {
-	// External interrupt service routine
-	_delay_ms(50); // Simple debouncing delay
+// External interrupt service routine for INT0
+    _delay_ms(50);  // Simple debouncing delay
 
-	if (GET_BIT(DIO_PORTD, DIO_PIN2)==0) {
-		// Button is pressed
+    DIO_u8GetPinValue(DIO_PORTD, DIO_PIN2, &button_state);
+    if (button_state == 0) {
+        // Button on INT0 is pressed
 		if (Temp_Limitter < 255) {
 			Temp_Limitter++;
 			I2CLCD_voidSetPosition(2, 14);
@@ -51,11 +51,11 @@ ISR(INT0_vect) {
 	}
 }
 ISR(INT1_vect) {
-	// External interrupt service routine
-	_delay_ms(50); // Simple debouncing delay
-
-	if (GET_BIT(DIO_PORTD, DIO_PIN3)==0) {
-		// Button is pressed
+	 // External interrupt service routine for INT1
+    _delay_ms(50);  // Simple debouncing delay
+    DIO_u8GetPinValue(DIO_PORTD, DIO_PIN3, &button_state);
+    if (button_state == 0) {
+        // Button on INT1 is pressed
 		if (Temp_Limitter > 0) {
 			Temp_Limitter--;
 			I2CLCD_voidSetPosition(2, 14);

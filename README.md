@@ -1,4 +1,4 @@
-# Human-Machine-Interface-
+# Temperature Monitoring System
 
 # Embedded Systems Assessment 2
 This is a sample readme file for our project, the project is to make a c program on arduino ide that utilizes a LM35 temperature sensor, push buttons, a buzzer, a 16x2 LCD display, I2C communication, external interrupts, and an ADC interface. This system allows users to monitor temperature readings from a sensor, control temperature limits using buttons, and receive alerts via a buzzer when the temperature goes beyond the configured limits. To make that we used some built in libraries, and created some header files that contain functions, prototyes, macros to make the main file more organized and understandable to any person.

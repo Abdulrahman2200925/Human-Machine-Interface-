@@ -43,7 +43,7 @@
 #define LCD_E_PIN_ID							        2
 
 
-#define slave_address_fixed_bits				  0x20 //<< 1		//0x20 as A0=A1=A2=0
+#define slave_address_fixed_bits				  0x27 		//DEFAULT ADDRESS OF PC8574 I2C MODULE 
 #define	WRITE									            0
 #define READ									            1
 

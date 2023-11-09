@@ -49,7 +49,8 @@ FUNCTION THAT DISPLAY THE TEMPERATURE OF LM35 AND CHECK IF THE TEMPERATURE EXCEE
 
 ```
 ## Design of the Circuit Using Tinkercad :
-![image](https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/9afc1a76-df8f-43bd-8955-16bc8ecd0755)
+![image](https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/3109c377-3a8b-48c8-bb80-69cf5d1fe2f9)
+
 
 
 ## Design of the Circuit on Proteus:

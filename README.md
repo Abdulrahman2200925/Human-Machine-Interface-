@@ -51,4 +51,5 @@ FUNCTION THAT DISPLAY THE TEMPERATURE OF LM35 AND CHECK IF THE TEMPERATURE EXCEE
 
 
 ## Design of the Circuit on Proteus:
-![image](<img width="558" alt="image" src="https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/7594099f-5b90-4814-b193-13835dcc1155">)
+![image](https://github.com/Abdulrahman2200925/Human-Machine-Interface-/assets/114658809/bbd6bec3-4509-4460-ad54-070fd6fd7623)
+

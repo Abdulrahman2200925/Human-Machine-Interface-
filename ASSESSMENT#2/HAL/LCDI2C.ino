@@ -53,26 +53,25 @@ void I2CLCD_init(void) {
 	I2CLCD_sendCommand(lcd_EntryMode);					// Clear LCD
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 /*
-Brief : This Function send data to the I2C 
-Parameters :
-=> u8 Data --> Data that you want to display (for every pixel )
-return : nothing
+Brief: This Function sends data to the I2C LCD.
+Parameters:
+=> u8 Data --> Data that you want to display (for every pixel)
+Return: nothing
 */
 void I2CLCD_Senddata(u8 data) {
     // Write to PCF8574 to set RS and RW (RW = 0)
-    SET_BIT(global_LCD, LCD_RS_PIN_ID);
-	PCF8574_write_I2C(global_LCD); 
+    SET_BIT(global_LCD, LCD_RS_PIN_ID); // Set RS bit
+    PCF8574_write_I2C(global_LCD);     // Write to PCF8574
 
-	CLR_BIT(global_LCD, LCD_RW_PIN_ID);
-    PCF8574_write_I2C(global_LCD);
+    CLR_BIT(global_LCD, LCD_RW_PIN_ID); // Clear RW bit
+    PCF8574_write_I2C(global_LCD);     // Write to PCF8574
     _delay_ms(1);
 
     // Enable LCD (E=1)
-    SET_BIT(global_LCD, LCD_E_PIN_ID);
-    PCF8574_write_I2C(global_LCD);
-	_delay_ms(1);
+    SET_BIT(global_LCD, LCD_E_PIN_ID); // Set E bit
+    PCF8574_write_I2C(global_LCD);     // Write to PCF8574
+    _delay_ms(1);
 
     // Prepare the data based on LCD_LAST_PORT_PINS configuration
     #ifdef LCD_LAST_PORT_PINS
@@ -83,18 +82,18 @@ void I2CLCD_Senddata(u8 data) {
 
     // Send data from PCF8574 to LCD PORT
     PCF8574_write_I2C(global_LCD);
-     _delay_ms(1);
-	 
+    _delay_ms(1);
+
     // Disable LCD (E=0)
-    CLR_BIT(global_LCD, LCD_E_PIN_ID);
-    PCF8574_write_I2C(global_LCD);
+    CLR_BIT(global_LCD, LCD_E_PIN_ID); // Clear E bit
+    PCF8574_write_I2C(global_LCD);     // Write to PCF8574
     _delay_ms(1);
-	
+
     // Enable LCD (E=1)
-    SET_BIT(global_LCD, LCD_E_PIN_ID);
-    PCF8574_write_I2C(global_LCD);
+    SET_BIT(global_LCD, LCD_E_PIN_ID); // Set E bit
+    PCF8574_write_I2C(global_LCD);     // Write to PCF8574
     _delay_ms(1);
-	
+
     // Prepare the data for the second nibble
     #ifdef LCD_LAST_PORT_PINS
         global_LCD = (global_LCD & 0x0F) | ((data & 0x0F) << 4);
@@ -104,34 +103,36 @@ void I2CLCD_Senddata(u8 data) {
 
     // Send data from PCF8574 to LCD PORT
     PCF8574_write_I2C(global_LCD);
-	_delay_ms(1);								
-	
-	 CLR_BIT(global_LCD, LCD_E_PIN_ID); //Disable LCD E=0
-	PCF8574_write_I2C(global_LCD); 
-	_delay_ms(1); 
+    _delay_ms(1);
+
+    CLR_BIT(global_LCD, LCD_E_PIN_ID); // Disable LCD E=0
+    PCF8574_write_I2C(global_LCD);
+    _delay_ms(1);
 }
+
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /*
-Brief : This Function Interface to send the configuration commands to the LCD Driver
-Parameters :
-=> Copy_u8Command --> Command number
-return : nothing
-Hint : RS pin Mode is the difference between this function and the previous (LCD_voidSendData)
+Brief: This Function interfaces to send configuration commands to the LCD Driver using I2C.
+Parameters:
+=> u8 Copy_u8Command --> Command number
+Return: Nothing
+Hint: RS pin Mode is the difference between this function and the previous (I2CLCD_voidSendData)
 */
 void I2CLCD_sendCommand(u8 command) {
-   CLR_BIT(global_LCD,LCD_RS_PIN_ID);		//Instruction Mode RS=0
-   PCF8574_write_I2C(global_LCD); 
-   
-   CLR_BIT(global_LCD,LCD_RW_PIN_ID);		//write data to LCD so RW=0
-   PCF8574_write_I2C(global_LCD); 
-   
-   _delay_ms(1);							
-   
-   SET_BIT(global_LCD,LCD_E_PIN_ID);		//Enable LCD E=1
-   PCF8574_write_I2C(global_LCD);  
-   
-   _delay_ms(1);
+    CLR_BIT(global_LCD, LCD_RS_PIN_ID);     // Instruction Mode RS = 0
+    PCF8574_write_I2C(global_LCD);
+
+    CLR_BIT(global_LCD, LCD_RW_PIN_ID);     // Write data to LCD so RW = 0
+    PCF8574_write_I2C(global_LCD);
+
+    _delay_ms(1);
+
+    SET_BIT(global_LCD, LCD_E_PIN_ID);      // Enable LCD E = 1
+    PCF8574_write_I2C(global_LCD);
+
+    _delay_ms(1);
 
     // Prepare the data based on LCD_LAST_PORT_PINS configuration
     #ifdef LCD_LAST_PORT_PINS
@@ -142,18 +143,18 @@ void I2CLCD_sendCommand(u8 command) {
 
     // Send data from PCF8574 to LCD PORT
     PCF8574_write_I2C(global_LCD);
-    _delay_ms(1); 
-	
-    // Disable LCD (E=0)
+    _delay_ms(1);
+
+    // Disable LCD (E = 0)
     CLR_BIT(global_LCD, LCD_E_PIN_ID);
     PCF8574_write_I2C(global_LCD);
     _delay_ms(1);
-	
-    // Enable LCD (E=1)
+
+    // Enable LCD (E = 1)
     SET_BIT(global_LCD, LCD_E_PIN_ID);
     PCF8574_write_I2C(global_LCD);
-    _delay_ms(1); 
-	
+    _delay_ms(1);
+
     // Prepare the data for the second nibble
     #ifdef LCD_LAST_PORT_PINS
         global_LCD = (global_LCD & 0x0F) | ((command & 0x0F) << 4);
@@ -162,14 +163,14 @@ void I2CLCD_sendCommand(u8 command) {
     #endif
 
     // Send data from PCF8574 to LCD PORT
-	PCF8574_write_I2C(global_LCD);
+    PCF8574_write_I2C(global_LCD);
+    _delay_ms(1);
 
-	_delay_ms(1);								// delay for processing Tdsw = 100ns 
-	
-	CLR_BIT(global_LCD,LCD_E_PIN_ID);			//Disable LCD E=0
-	PCF8574_write_I2C(global_LCD);   
-	_delay_ms(1);
+    CLR_BIT(global_LCD, LCD_E_PIN_ID);       // Disable LCD E = 0
+    PCF8574_write_I2C(global_LCD);
+    _delay_ms(1);
 }
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -277,21 +278,29 @@ void I2CLCD_voidClearScreen(void)
 	_delay_ms(10);											
 }
 
-void I2CClearLCDLine(u8 line) {
-	u8 LOC_u8data;
-	if (line == LCD_ROW_1) {
-		LOC_u8data = LCD_SET_CURSOR_LOCATION  ;				// Row1
-		} else if (line == LCD_ROW_2) {
-		LOC_u8data = LCD_SET_CURSOR_LOCATION   + 64;		// Row2
-		} else {
-		LOC_u8data = LCD_SET_CURSOR_LOCATION  ;				// Default to Row1 for invalid input
-	}
+void LCD_voidClearLine(u8 Copy_u8Row) {
+    u8 LOC_u8data;
 
-	I2CLCD_sendCommand(LOC_u8data);							// Set cursor to the beginning of the specified line
+    // Check if the row is valid (1 or 2)
+    if (Copy_u8Row < 1 || Copy_u8Row > 2) {
+        // Invalid row, do nothing
+        return;
+    }
 
-	for (u8 i = 0; i < 16; i++) {
-		I2CLCD_Senddata(' ');								// Fill the line with empty spaces
-	}
+    // Calculate the starting position of the row
+    if (Copy_u8Row == LCD_ROW_1) {
+        LOC_u8data = LCD_SET_CURSOR_LOCATION;
+    } else if (Copy_u8Row == LCD_ROW_2) {
+        LOC_u8data = LCD_SET_CURSOR_LOCATION + 64;
+    }
+
+    // Clear the entire line by writing spaces (ASCII value for space is 0x20)
+    for (u8 col = 0; col < 16; col++) {
+        	I2CLCD_Senddata(' '); // Write a space character
+    }
+
+    // Set the cursor back to the beginning of the cleared line
+    I2CLCD_sendCommand(LOC_u8data);
 }
 void I2CdisplayNumberWithLeadingZeros(u8 number) {
 	if (number < 10) {

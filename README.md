@@ -18,6 +18,7 @@ This is a sample readme file for our project, the project is to make a c program
 
 ## Built In Libraries We used:
 * avr/interrupt.h
+* avr/delay.h
 
 ### Functions Created and Used In The Main:
 ```
